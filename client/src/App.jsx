@@ -26,6 +26,7 @@ function App() {
         <Route path="/add-food" element={<FoodForm/>}/>
         <Route path="/add-hotel" element={<FoodList />} />
         <Route path="/restaurant" element={<RestaurantDashboard />} />
+        <Route path='/donation' element={<HotelForm/>}/>
         <Route path="/admin" element={
           <PrivateRoute role={Roles.ADMIN}><AdminDashboard /></PrivateRoute>
         } />
