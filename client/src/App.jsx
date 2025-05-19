@@ -14,6 +14,7 @@ import FoodPage from "./pages/FoodPage";
 import HotelForm from "./pages/HotelForm";
 import FoodForm from "./components/FoodForm";
 import FoodList from "./components/FoodList";
+import RequestedFoodList from "./pages/RequestedFoodList";
 
 function App() {
   return (
@@ -26,9 +27,12 @@ function App() {
         <Route path="/add-food" element={<FoodForm/>}/>
         <Route path="/add-hotel" element={<FoodList />} />
         <Route path="/restaurant" element={<RestaurantDashboard />} />
+        <Route path="/requested-food" element={<RequestedFoodList/>}/>
         <Route path='/donation' element={<HotelForm/>}/>
-        <Route path="/admin" element={
+        {/* <Route path="/admin" element={
           <PrivateRoute role={Roles.ADMIN}><AdminDashboard /></PrivateRoute>
+        } /> */}
+        <Route path="/admin" element={<AdminDashboard />
         } />
         <Route path="/ngo" element={
           <PrivateRoute role={Roles.NGO}><NGODashboard /></PrivateRoute>

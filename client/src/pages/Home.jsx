@@ -13,7 +13,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 py-24 sm:py-32 lg:px-8 lg:py-40 flex flex-col lg:flex-row items-center">
-          <div className="lg:w-1/2 z-10">
+          <div className="lg:w-1/2 z-10 p-2">
             <div className="bg-emerald-800/20 backdrop-blur-sm rounded-full px-4 py-2 inline-flex items-center mb-6">
               <FaLeaf className="text-emerald-400 mr-2" />
               <span className="text-emerald-300 font-medium">Sustainable Food Network</span>
@@ -40,6 +40,13 @@ export default function Home() {
                 <FaHandHoldingHeart className="mr-2" />
                 Join as NGO
               </Link>
+              <Link
+    to="/requested-food"
+    className="bg-emerald-700 hover:bg-emerald-800 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 ease-in-out shadow-lg hover:shadow-emerald-400/30 flex items-center justify-center"
+  >
+    <MdDeliveryDining className="mr-2" />
+    View Requested Food
+  </Link>
             </div>
           </div>
           <div className="lg:w-1/2 mt-16 lg:mt-0 relative">

@@ -6,7 +6,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-
+const goHome = () => navigate("/");
   const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
@@ -62,6 +62,13 @@ const Login = () => {
         onSubmit={handleLogin}
         className="bg-white p-8 rounded shadow-md w-full max-w-md"
       >
+        <button
+    type="button"
+    onClick={goHome}
+    className="mb-4 text-blue-600 hover:underline text-sm"
+  >
+    ← Back to Home
+  </button>
         <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
           Login
         </h2>

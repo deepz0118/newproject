@@ -48,7 +48,7 @@ const FoodForm = ({ onSuccess }) => {
           "Content-Type": "application/json"
         }
       });
-      console.log("Food added:", response.data);
+      //console.log("Food added:", response.data);
       setMessage("Food successfully added!");
       setFormData({
         hotelName: "",

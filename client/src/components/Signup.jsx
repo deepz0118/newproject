@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Roles } from "../utils/roles";
 import api from "../api"; // Ensure this is configured correctly
-
+import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
 const Signup = () => {
   const [form, setForm] = useState({
     email: "",
@@ -10,7 +10,7 @@ const Signup = () => {
   });
   const [error, setError] = useState(""); // To handle error messages
   const [isSubmitting, setIsSubmitting] = useState(false); // For handling loading state
-
+const navigate=useNavigate(); // Initialize useNavigate hook
   // Handle input change for form fields
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -36,13 +36,19 @@ const Signup = () => {
       setIsSubmitting(false);
     }
   };
-
+const goHome = () => navigate("/");
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <form
         onSubmit={handleSubmit}
         className="bg-white p-8 rounded shadow-md w-full max-w-md"
-      >
+      > <button
+    type="button"
+    onClick={goHome}
+    className="mb-4 text-blue-600 hover:underline text-sm"
+  >
+    ← Back to Home
+  </button>
         <h2 className="text-2xl font-semibold mb-6 text-center">Sign Up</h2>
 
         {error && <p className="text-red-500 mb-4">{error}</p>}
