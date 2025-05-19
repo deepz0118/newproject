@@ -5,13 +5,16 @@ const Food = require("../models/Food");
 // Add food
 router.post("/add", async (req, res) => {
   try {
+    //console.log("Received food data:", req.body); // ✅ See what's sent
     const food = new Food(req.body);
     await food.save();
     res.status(201).json(food);
   } catch (error) {
+    console.error("Error adding food:", error); // ✅ Log specific validation issue
     res.status(400).json({ error: error.message });
   }
 });
+
 
 // Get all food
 router.get("/", async (req, res) => {
