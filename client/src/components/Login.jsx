@@ -45,7 +45,7 @@ const Login = () => {
           navigate("/ngo");
           break;
         case "restaurant":
-          navigate("/restaurant");
+          navigate("/add-hotel");
           break;
         default:
           setError("Unknown role");
