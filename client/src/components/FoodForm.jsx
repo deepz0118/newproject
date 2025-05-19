@@ -11,6 +11,7 @@ const FoodForm = ({ onSuccess }) => {
     available: false,
     verified: false,
     ownerLicense: "",
+    ownerEmail: ""
   });
 
   const [message, setMessage] = useState("");
@@ -29,12 +30,26 @@ const FoodForm = ({ onSuccess }) => {
     setLoading(true);
     setMessage("");
 
-    try {
-      await axios.post("http://localhost:5000/api/food", formData);
-      setMessage("✅ Food donation added successfully.");
-      if (onSuccess) onSuccess();
+    const foodData = {
+      hotelName: formData.hotelName,
+      location: formData.location,
+      foodType: formData.foodType,
+      quantity: formData.quantity,
+      expiry: formData.expiry,
+      available: formData.available,
+      verified: formData.verified,
+      ownerLicense: formData.ownerLicense,
+      ownerEmail: formData.ownerEmail
+    };
 
-      // Reset form
+    try {
+      const response = await axios.post("http://localhost:5000/api/food/add", foodData, {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+      console.log("Food added:", response.data);
+      setMessage("Food successfully added!");
       setFormData({
         hotelName: "",
         location: "",
@@ -44,10 +59,12 @@ const FoodForm = ({ onSuccess }) => {
         available: false,
         verified: false,
         ownerLicense: "",
+        ownerEmail: ""
       });
-    } catch (error) {
-      console.error("Error adding food:", error);
-      setMessage("❌ Failed to submit. Please check all fields.");
+      onSuccess?.();
+    } catch (err) {
+      console.error("Error adding food:", err);
+      setMessage("Error: " + (err.response?.data?.message || "Something went wrong"));
     } finally {
       setLoading(false);
     }
@@ -114,6 +131,16 @@ const FoodForm = ({ onSuccess }) => {
         name="ownerLicense"
         placeholder="Owner License"
         value={formData.ownerLicense}
+        onChange={handleChange}
+        className="w-full p-2 border border-gray-300 rounded"
+        required
+      />
+
+      <input
+        type="email"
+        name="ownerEmail"
+        placeholder="Owner Email"
+        value={formData.ownerEmail}
         onChange={handleChange}
         className="w-full p-2 border border-gray-300 rounded"
         required
