@@ -9,6 +9,13 @@ const foodSchema = new mongoose.Schema({
   available: { type: Boolean, default: true },
   ownerLicense: { type: String, required: true },
   verified: { type: Boolean, default: false },
+  ownerEmail: {
+  type: String,
+  required: true
+}
+
 });
+
+
 
 module.exports = mongoose.model("Food", foodSchema);
